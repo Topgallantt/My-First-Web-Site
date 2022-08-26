@@ -1,0 +1,314 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family:'Open Sans', sans-serif;
+    background-color: #fff;
+    color: #333;
+    line-height: 1.6;
+}
+
+ul {
+    list-style: none;
+}
+a {
+    color: #333;
+    text-decoration: none;
+}
+h1, h2 {
+    font-weight: 500;
+    line-height: 1.2;
+}
+p {
+    
+    margin: 10px 0;
+}
+img {
+    width: 100%;
+}
+
+
+/* Navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    color: #fff;
+    opacity: 0.8;
+    width: 100%;
+    height: 70px;
+    position: fixed;
+    top: 0;
+    padding: 0 30px;
+    z-index: 9999;
+    transition: 0.24s ease-in;
+    
+}
+.navbar.top {
+    /* makli smo onaj sivi fejd sa navigacje: */
+    background-color: transparent;
+}
+.navbar ul {
+    display: flex;
+}
+
+.navbar ul li a {
+    color: #fff;
+    
+    padding: 10px 20px;
+    /* Da odvojimo marginu 8px levo i desno da se ne poklapa sa padingom nego da ima prazan prostor izmedju navigacije. */
+    margin: 0 8px;
+    
+}
+
+.navbar ul li a:hover {
+    /* DA NAPRAVIMO ONU CRTU ISPOD NAVIGACIJE */
+    /* Uradio sam dole .nav-links: :before mnogo bolju*/
+    _border-bottom: 2px solid #28a745;
+}
+.nav-links {
+    position: relative;
+    color: #eee;
+    letter-spacing: 2px;
+    text-decoration: none;
+    font-family: Verdana;
+    padding: 12px;
+    margin: 0 18px;
+}
+
+.nav-links::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    transition: width 0.2s ease-out;
+    background-color: #1af74e;
+}
+
+.nav-links:hover::before {
+    width: 100%;
+}
+
+.navbar .logo {
+    /* Da bi boldovali malo logo (BOOK) */
+    font-weight: 400;
+}
+
+/* Header */
+.hero {
+    /* Da postavimo nasu sliku/cover: */
+    background: url('../img/home/showcase.jpg') no-repeat center center/cover;
+    /* 100vh(viper hajta) je da zauzima 100% naseg vidnog polja */
+    height: 100vh;
+    color: #fff;
+    /* Dodali smo position: relative zato sto kad budemo posle dodavali beffore da bi smo promenili neku boju */
+    position: relative;
+}
+
+
+.hero .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* Zasto smo gore u .hero dali height: 100vh; a ovde u detetu height: 100%; zato sto je dete .hero-a i on ce znati kada .hero bude zauzimao 100% nekog uredjaja da zauzima i on 100% te visine. Zato sto je dete.*/
+    height: 100%;
+    /* Da postujemo ekrane ako su neke manje rezulucije. */
+    padding: 0 20px;
+}
+.hero .content h1 {
+    /* Da povecamo slova :D */
+    font-size: 55px;
+    
+   
+}
+.hero .content p {
+    font-size: 23px;
+    margin: 20px 0 30px;
+    /* Da se ne prostire vise od 600px */
+    max-width: 600px;
+}
+
+.hero::before {
+    /*(U roditelju smo obavezno stavili relativ zato sto je dete absolute!) 
+    Sada podesavamo da krece od gornjeg levog ugla: */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Ovde stavljamo ako hocemo da damo malo "senku" nasoj slici/background-u: background-color: rgba(0, 0, 0, .01); */
+    background-color: rgba(0, 0, 0, .01);
+}
+
+.hero * {
+    /* z-index je uzeo sve sto se nalazi u .hero sekciji i stavio da bude iznad te pozadine tacnije da nema nikakve veze sa tom pozadinom da ne uzima boju sa ovim gore opasitijem (background-color: rgba(0, 0, 0, .01);   */
+    /* z-index: 10; */
+}
+/* Icons */
+.icons {
+    padding: 30px;
+}
+
+.icons h3 {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.icons i {
+    background-color: #28a745;
+    color: #fff;
+    /* 1rem =16px */
+    padding: 1rem;  
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+/* Cases */
+.cases img{
+    /* Da damo GLAERIJI ZAOBLJENJE! */
+    border-radius: 3%;
+}
+.cases img:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+/* Team */
+.team img {
+    border-radius: 5%;
+}
+
+/* Contact */
+.callback-form {
+    width: 100%;
+    padding: 20px 0;
+}
+.callback-form .form-control {
+    margin-bottom: 15px;
+}
+
+.callback-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+.callback-form input {
+    width: 100%;
+    height: 40px;
+    padding: 4px;
+    border: 1px solid #f5f5ff;
+
+}
+/* Menjamo fokus */
+.callback-form input:focus {
+    outline-color: #28a745;
+}
+.callback-form .btn {
+    padding: 12px 0;
+    margin-top: 20px;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 0;
+}
+.footer a {
+    color: #28a745; 
+}
+.footer a:hover {
+    color: rgb(255, 202, 28);
+    background-color: #28a745;
+}
+.footer .social > * {
+    margin-right: 30px;
+
+}
+.footer .social {
+    /* Da stavimo futer u red-u! */
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    
+}
+.footer .social a {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #fff;
+    line-height: 48px;
+    margin: 0 auto;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    margin-bottom: 10px;
+    transition: 0.3s ease all;
+}
+.footer .social p {
+    margin: 0 auto;
+}
+
+/* Moblie */
+@media(max-width:768px) {
+    /* Ovde krecemo responziv za mobilne uredjaje. Pa krecemo od pocetka:*/
+    .logo {
+
+    }
+    .navbar{
+        flex-direction: column;
+        height: 122px;
+        padding: 20px;
+        z-index: 9999;
+    }
+    .navbar ul li a {
+        padding: 10px;
+        margin: 0 3px;
+    }
+
+    .flex-items {
+        flex-direction: column;
+    }
+
+    .flex-columns .column, .flex-grid .column {
+        flex: 100%;
+        flex-basis: 100%;
+    }
+    .team img {
+        width: 85%;
+    }
+    .footer .social a {
+        margin: 0 8px;
+       
+    }
+    .footer .social p {
+        margin: 0 auto;
+    }
+}
+
+@media(max-width:864px) {
+    .navbar{
+        flex-direction: column;
+            height: 122px;
+            padding: 20px;
+            z-index: 9999;
+    }
+}
